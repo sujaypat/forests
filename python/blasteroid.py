@@ -13,6 +13,8 @@ class Blasteroid:
     surfaces = [
         pygame.image.load(os.path.join('images','asteroid1.png')),
         pygame.image.load(os.path.join('images','asteroid2.png')),
+        pygame.image.load(os.path.join('images','asteroid3.png')),
+        pygame.image.load(os.path.join('images','asteroid4.png')),
     ]
     
     def __init__(self, pos=None, on_screen=False):
