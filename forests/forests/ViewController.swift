@@ -1,25 +1,23 @@
 //
 //  ViewController.swift
-//  forests
+//  ParseTutorial
 //
-//  Created by Sujay Patwardhan on 9/12/15.
-//  Copyright © 2015 Sujay Patwardhan. All rights reserved.
+//  Copyright (c) 2015 bizzi-body. All rights reserved.
 //
 
 import UIKit
-import Parse
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		// Do any additional setup after loading the view, typically from a nib.
+	}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
 
 
 }
