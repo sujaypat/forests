@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="http://www.parsecdn.com/js/parse-1.6.0.min.js"></script>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+	Parse.initialize("nHOps9WmG2ubPDRp1XA8gHR6YPB5fGDCAUjGUttN", "sfvMLXaSvm2CUGsEbbLEc5HLXHp3vSr8EDlmteaU");
+
+	var catalog = "ACRDBT,ECONGECC,IBRENCMM,JNTIAIAM,LTSBBSBX,MXWITMOL,SABCI,TDMIMOM,UKRVAYOY".split(",");
+
+	var counter = 0;
+
+	var BloombergObject = Parse.Object.extend("BloombergObject");
+
+	function iterateOverYears (i, j) {
+		if (j<2015) {
+			$.ajax({
+				url: 'http://localhost:4567/'+j+'/'+catalog[i]+'.json',
+				dataType: "json",
+				success: function(data){
+					counter ++;
+					iterateOverObjects(data, 0);
+					iterateOverYears(i, j+1);
+				}
+			});			
+		};
+	}
+
+	function iterateOverObjects (data, k) {
+		if (k<data.length) {
+			var bo = new BloombergObject();
+			setTimeout(function() {
+				console.log(data[k]);
+				bo.save(data[k]).then(function(){
+					iterateOverObjects(data, k+1);
+				});							
+			}, 40);
+		};
+	}
+
+	function iterateOverCatalog(i) {
+		if(i<catalog.length){
+			iterateOverYears(i, 2005);
+			i++;
+		}
+	}
+
+	function transfer(){
+		iterateOverCatalog(0);
+	}
+
+
+	
+</script>
+</body>
+</html>

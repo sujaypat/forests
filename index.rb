@@ -30,7 +30,11 @@ get "/:year/:ticker?.:format?" do
 		content_type :json
 		@data.items.to_json
 	else
-		erb :Index
+		erb :index
 	end
 		
+end
+
+get "/migrateToParse" do
+	File.read('transferToParse.html')
 end
