@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'sinatra'
 require 'aws-sdk-core'
 require 'json'
