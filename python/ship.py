@@ -51,6 +51,7 @@ class Ship:
         self.lb_on = False
         self.ub_on = False
         self.db_on = False
+        self.dead = False
         self.render_healthbar()
 
     def render_healthbar(self):
@@ -68,6 +69,8 @@ class Ship:
         if self.hitstack > 0:
             self.hitstack = 0
             self.render_healthbar()
+        if not self.hp > 0:
+            self.dead = True
         self.xv = 0
         self.yv = 0
         self.rb_on = False
@@ -99,25 +102,26 @@ class Ship:
         return self.hitstack > 0
 
     def blit(self, dest):
-        dest.blit(self.surface, self.pos)
-        if self.rb_on:
-            dest.blit(
-                Ship.right_blasters[int(random() * len(Ship.right_blasters))],
-                (self.pos[0] - 32 - self.blaster_padding, self.pos[1]),
-            )
-        if self.lb_on:
-            dest.blit(
-                Ship.left_blasters[int(random() * len(Ship.left_blasters))],
-                (self.pos[0] + 32 + self.blaster_padding, self.pos[1]),
-            )
-        if self.ub_on:
-            dest.blit(
-                Ship.up_blasters[int(random() * len(Ship.up_blasters))],
-                (self.pos[0], self.pos[1] + 32 + self.blaster_padding),
-            )
-        if self.db_on:
-            dest.blit(
-                Ship.down_blasters[int(random() * len(Ship.down_blasters))],
-                (self.pos[0], self.pos[1] - 32 - self.blaster_padding),
-            )
+        if not self.dead:
+            dest.blit(self.surface, self.pos)
+            if self.rb_on:
+                dest.blit(
+                    Ship.right_blasters[int(random() * len(Ship.right_blasters))],
+                    (self.pos[0] - 32 - self.blaster_padding, self.pos[1]),
+                )
+            if self.lb_on:
+                dest.blit(
+                    Ship.left_blasters[int(random() * len(Ship.left_blasters))],
+                    (self.pos[0] + 32 + self.blaster_padding, self.pos[1]),
+                )
+            if self.ub_on:
+                dest.blit(
+                    Ship.up_blasters[int(random() * len(Ship.up_blasters))],
+                    (self.pos[0], self.pos[1] + 32 + self.blaster_padding),
+                )
+            if self.db_on:
+                dest.blit(
+                    Ship.down_blasters[int(random() * len(Ship.down_blasters))],
+                    (self.pos[0], self.pos[1] - 32 - self.blaster_padding),
+                )
         dest.blit(self.healthbar_surface, (5, utils.SCREEN_H - 5 - 32))

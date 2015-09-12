@@ -10,10 +10,10 @@ from particle import Particle
 
 class Blasteroid:
 
-    surfaces = {
-        1 : pygame.image.load(os.path.join('images','asteroid1.png')),
-        2 : pygame.image.load(os.path.join('images','asteroid2.png')),
-    }
+    surfaces = [
+        pygame.image.load(os.path.join('images','asteroid1.png')),
+        pygame.image.load(os.path.join('images','asteroid2.png')),
+    ]
     
     def __init__(self, pos=None, on_screen=False):
         """
@@ -37,7 +37,7 @@ class Blasteroid:
         else:
             self.pos = pos
         possibilities = len(Blasteroid.surfaces)
-        n = int(random() * possibilities) + 1
+        n = int(random() * possibilities)
         self.surface = Blasteroid.surfaces[n]
         if random() > 0.5:
             xmod = -1
@@ -47,8 +47,8 @@ class Blasteroid:
             ymod = -1
         else:
             ymod = 1
-        self.xv = xmod * (int(random() * 4) + 1)
-        self.yv = ymod * (int(random() * 4) + 1)
+        self.xv = xmod * (int(random() * 3) + 2)
+        self.yv = ymod * (int(random() * 3) + 2)
         self.particles = set()
         self.dead = False
 
@@ -77,6 +77,7 @@ class Blasteroid:
                 self.particles = set(
                     [Particle(self.pos) for p in range(int(random() * 10) + 1)]
                 )
+            return x > -32 and x < utils.SCREEN_W + 32 and y > -32 and y < utils.SCREEN_H + 32
         else:
             for particle in self.particles:
                 particle.update()
