@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F07DB3E5-464C-470D-9904-80F663966439</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ParseTutorial</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>6212371FF68CC7F6F709A6C633581D642B461CCE</key>
+		<string>https://github.com/Bizzi-Body/Swift-Parse-Tutorial-Part-1.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ParseTutorial.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>6212371FF68CC7F6F709A6C633581D642B461CCE</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Bizzi-Body/Swift-Parse-Tutorial-Part-1.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>6212371FF68CC7F6F709A6C633581D642B461CCE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6212371FF68CC7F6F709A6C633581D642B461CCE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Swift-Parse-Tutorial-Part-1</string>
+		</dict>
+	</array>
+</dict>
+</plist>
