@@ -2,15 +2,6 @@
 <html>
 <body>
 
-<% @debug.table.key_schema.each do |key_schema| %>
-	<%= key_schema.attribute_name %> - <%= key_schema.key_type %>
-	<br>
-<% end %>
-
-<%= @debug.table.key_schema[0].to_hash %>
-
-<br><br>
-
 <ul>
 <% @data.items.each do |record| %>
 	<li>
