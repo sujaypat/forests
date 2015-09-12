@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<ul>
+	<% @data.each do |record| %>
+		<li>
+		<%= record[:time] %>
+		 - 
+		<%= record[:value] %>
+		</li>
+	<% end %>
+</ul>
+</body>
+</html>
