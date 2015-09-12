@@ -1,9 +1,9 @@
 
 //
 //  AppDelegate.swift
-//  ParseTutorial
+//  forests
 //
-//  Copyright (c) 2015 bizzi-body. All rights reserved.
+//  Copyright (c) 2015 Sujay Patwardhan. All rights reserved.
 //
 
 import UIKit
@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-		Parse.setApplicationId("qY5IVl0TrKEql457j807eDjLPHKMeas9b0jhPS0R", clientKey:"cZXDeJu9p5FZhjDh7Ssw5DYMdhaSqHhBDr6hKyey")
+		Parse.setApplicationId("nHOps9WmG2ubPDRp1XA8gHR6YPB5fGDCAUjGUttN", clientKey:"WeHrt87Cxpb0qBBhVm8KlTHsRQRXhqRGMrmxTwoT")
 		
 		// Override point for customization after application launch.
 		return true

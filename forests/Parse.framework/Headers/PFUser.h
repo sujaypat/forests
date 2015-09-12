@@ -1,19 +1,20 @@
-/**
- * Copyright (c) 2015-present, Parse, LLC.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
+//
+//  PFUser.h
+//
+//  Copyright 2011-present Parse Inc. All rights reserved.
+//
 
 #import <Foundation/Foundation.h>
 
-#import <Bolts/BFTask.h>
-
+#if TARGET_OS_IPHONE
 #import <Parse/PFConstants.h>
 #import <Parse/PFObject.h>
 #import <Parse/PFSubclassing.h>
+#else
+#import <ParseOSX/PFConstants.h>
+#import <ParseOSX/PFObject.h>
+#import <ParseOSX/PFSubclassing.h>
+#endif
 
 PF_ASSUME_NONNULL_BEGIN
 
@@ -78,7 +79,7 @@ typedef void(^PFUserLogoutResultBlock)(NSError *PF_NULLABLE_S error);
 
  @returns Returns a new `PFUser` object.
  */
-+ (instancetype)user;
++ (PFUser *)user;
 
 /*!
  @abstract Enables automatic creation of anonymous users.
@@ -119,7 +120,7 @@ typedef void(^PFUserLogoutResultBlock)(NSError *PF_NULLABLE_S error);
 
  @returns Returns `YES` if the sign up was successful, otherwise `NO`.
  */
-- (BOOL)signUp PF_SWIFT_UNAVAILABLE;
+- (BOOL)signUp;
 
 /*!
  @abstract Signs up the user *synchronously*.
@@ -157,7 +158,7 @@ typedef void(^PFUserLogoutResultBlock)(NSError *PF_NULLABLE_S error);
  */
 - (void)signUpInBackgroundWithBlock:(PF_NULLABLE PFBooleanResultBlock)block;
 
-/*!
+/*
  @abstract Signs up the user *asynchronously*.
 
  @discussion This will also enforce that the username isn't already taken.
@@ -189,7 +190,7 @@ typedef void(^PFUserLogoutResultBlock)(NSError *PF_NULLABLE_S error);
  If login failed for either wrong password or wrong username, returns `nil`.
  */
 + (PF_NULLABLE instancetype)logInWithUsername:(NSString *)username
-                                     password:(NSString *)password PF_SWIFT_UNAVAILABLE;
+                                     password:(NSString *)password;
 
 /*!
  @abstract Makes a *synchronous* request to login a user with specified credentials.
@@ -222,7 +223,7 @@ typedef void(^PFUserLogoutResultBlock)(NSError *PF_NULLABLE_S error);
 + (BFTask *)logInWithUsernameInBackground:(NSString *)username
                                  password:(NSString *)password;
 
-/*!
+/*
  @abstract Makes an *asynchronous* request to login a user with specified credentials.
 
  @discussion Returns an instance of the successfully logged in `PFUser`.
@@ -269,7 +270,7 @@ typedef void(^PFUserLogoutResultBlock)(NSError *PF_NULLABLE_S error);
  @returns Returns an instance of the `PFUser` on success.
  If becoming a user fails due to incorrect token, it returns `nil`.
  */
-+ (PF_NULLABLE instancetype)become:(NSString *)sessionToken PF_SWIFT_UNAVAILABLE;
++ (PF_NULLABLE instancetype)become:(NSString *)sessionToken;
 
 /*!
  @abstract Makes a *synchronous* request to become a user with the given session token.
@@ -297,19 +298,7 @@ typedef void(^PFUserLogoutResultBlock)(NSError *PF_NULLABLE_S error);
  */
 + (BFTask *)becomeInBackground:(NSString *)sessionToken;
 
-/*!
- @abstract Makes an *asynchronous* request to become a user with the given session token.
-
- @discussion Returns an instance of the successfully logged in `PFUser`. This also caches the user locally
- so that calls to <currentUser> will use the latest logged in user.
-
- @param sessionToken The session token for the user.
- @param block The block to execute.
- The block should have the following argument signature: `^(PFUser *user, NSError *error)`.
- */
-+ (void)becomeInBackground:(NSString *)sessionToken block:(PF_NULLABLE PFUserResultBlock)block;
-
-/*!
+/*
  @abstract Makes an *asynchronous* request to become a user with the given session token.
 
  @discussion Returns an instance of the successfully logged in `PFUser`. This also caches the user locally
@@ -323,6 +312,17 @@ typedef void(^PFUserLogoutResultBlock)(NSError *PF_NULLABLE_S error);
 + (void)becomeInBackground:(NSString *)sessionToken
                     target:(PF_NULLABLE_S id)target
                   selector:(PF_NULLABLE_S SEL)selector;
+
+/*!
+ @abstract Makes an *asynchronous* request to become a user with the given session token.
+
+ @discussion Returns an instance of the successfully logged in `PFUser`. This also caches the user locally
+ so that calls to <currentUser> will use the latest logged in user.
+
+ @param sessionToken The session token for the user.
+ @param block The block to execute. The block should have the following argument signature: (PFUser *user, NSError *error)
+ */
++ (void)becomeInBackground:(NSString *)sessionToken block:(PF_NULLABLE PFUserResultBlock)block;
 
 ///--------------------------------------
 /// @name Revocable Session
@@ -361,7 +361,7 @@ typedef void(^PFUserLogoutResultBlock)(NSError *PF_NULLABLE_S error);
 + (void)logOut;
 
 /*!
- @abstract *Asynchronously* logs out the currently logged in user.
+ @abstract *Asynchronously* logs out the currenlt logged in user.
 
  @discussion This will also remove the session from disk, log out of linked services
  and all future calls to <currentUser> will return `nil`. This is preferrable to using <logOut>,
@@ -372,7 +372,7 @@ typedef void(^PFUserLogoutResultBlock)(NSError *PF_NULLABLE_S error);
 + (BFTask *)logOutInBackground;
 
 /*!
- @abstract *Asynchronously* logs out the currently logged in user.
+ @abstract *Asynchronously* logs out the currenlt logged in user.
 
  @discussion This will also remove the session from disk, log out of linked services
  and all future calls to <currentUser> will return `nil`. This is preferrable to using <logOut>,
@@ -396,7 +396,7 @@ typedef void(^PFUserLogoutResultBlock)(NSError *PF_NULLABLE_S error);
 
  @returns Returns `YES` if the reset email request is successful. `NO` - if no account was found for the email address.
  */
-+ (BOOL)requestPasswordResetForEmail:(NSString *)email PF_SWIFT_UNAVAILABLE;
++ (BOOL)requestPasswordResetForEmail:(NSString *)email;
 
 /*!
  @abstract *Synchronously* send a password reset request for a specified email and sets an error object.
@@ -408,7 +408,8 @@ typedef void(^PFUserLogoutResultBlock)(NSError *PF_NULLABLE_S error);
  @param error Error object to set on error.
  @returns Returns `YES` if the reset email request is successful. `NO` - if no account was found for the email address.
  */
-+ (BOOL)requestPasswordResetForEmail:(NSString *)email error:(NSError **)error;
++ (BOOL)requestPasswordResetForEmail:(NSString *)email
+                               error:(NSError **)error;
 
 /*!
  @abstract Send a password reset request asynchronously for a specified email and sets an
@@ -419,20 +420,7 @@ typedef void(^PFUserLogoutResultBlock)(NSError *PF_NULLABLE_S error);
  */
 + (BFTask *)requestPasswordResetForEmailInBackground:(NSString *)email;
 
-/*!
- @abstract Send a password reset request *asynchronously* for a specified email.
-
- @discussion If a user account exists with that email, an email will be sent to that address
- with instructions on how to reset their password.
-
- @param email Email of the account to send a reset password request.
- @param block The block to execute.
- It should have the following argument signature: `^(BOOL succeeded, NSError *error)`.
- */
-+ (void)requestPasswordResetForEmailInBackground:(NSString *)email
-                                           block:(PF_NULLABLE PFBooleanResultBlock)block;
-
-/*!
+/*
  @abstract Send a password reset request *asynchronously* for a specified email and sets an error object.
 
  @discussion If a user account exists with that email, an email will be sent to that address
@@ -448,6 +436,19 @@ typedef void(^PFUserLogoutResultBlock)(NSError *PF_NULLABLE_S error);
 + (void)requestPasswordResetForEmailInBackground:(NSString *)email
                                           target:(PF_NULLABLE_S id)target
                                         selector:(PF_NULLABLE_S SEL)selector;
+
+/*!
+ @abstract Send a password reset request *asynchronously* for a specified email.
+
+ @discussion If a user account exists with that email, an email will be sent to that address
+ with instructions on how to reset their password.
+
+ @param email Email of the account to send a reset password request.
+ @param block The block to execute.
+ It should have the following argument signature: `^(BOOL succeeded, NSError *error)`.
+ */
++ (void)requestPasswordResetForEmailInBackground:(NSString *)email
+                                           block:(PF_NULLABLE PFBooleanResultBlock)block;
 
 @end
 
