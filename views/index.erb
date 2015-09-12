@@ -1,14 +1,22 @@
 <!DOCTYPE HTML>
 <html>
 <body>
+
+<% @debug.table.key_schema.each do |key_schema| %>
+	<%= key_schema.attribute_name %> - <%= key_schema.key_type %>
+	<br>
+<% end %>
+
+<%= @debug.table.key_schema[0].to_hash %>
+
+<br><br>
+
 <ul>
-	<% @data.each do |record| %>
-		<li>
-		<%= record[:time] %>
-		 - 
-		<%= record[:value] %>
-		</li>
-	<% end %>
+<% @data.items.each do |record| %>
+	<li>
+		<%= record["Value"] %>
+	</li>
+<% end %>
 </ul>
 </body>
 </html>
