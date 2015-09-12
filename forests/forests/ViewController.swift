@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  ParseTutorial
+//  forests
 //
-//  Copyright (c) 2015 bizzi-body. All rights reserved.
+//  Copyright (c) 2015 Sujay Patwardhan. All rights reserved.
 //
 
 import UIKit
