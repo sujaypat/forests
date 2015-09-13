@@ -15,4 +15,5 @@ class BBManager:
             possibilities = len(BBManager.tickerlist)
             n = int(possibilities * random())
             name = BBManager.tickerlist[n]
-        return name, BBManager.everything.filter(Ticker=name)
+            name_value = BBManager.everything.filter(Ticker=name)[0].Name
+        return name_value, name, BBManager.everything.filter(Ticker=name)

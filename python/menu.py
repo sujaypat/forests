@@ -14,7 +14,7 @@ class Menu(Scene):
     def __init__(self):
         super().__init__()
         self.BACKGROUND_COLOR = (25, 0, 75, 255)
-        self.NUM_BLASTEROIDS = 100
+        self.NUM_BLASTEROIDS = 50
         self.bgblasteroids = set(
             [Blasteroid() for b in range(self.NUM_BLASTEROIDS)]
         )
