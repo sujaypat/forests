@@ -9,7 +9,7 @@
 <script type="text/javascript">
 	Parse.initialize("nHOps9WmG2ubPDRp1XA8gHR6YPB5fGDCAUjGUttN", "sfvMLXaSvm2CUGsEbbLEc5HLXHp3vSr8EDlmteaU");
 
-	var catalog = "ACRDBT,ECONGECC,IBRENCMM,JNTIAIAM,LTSBBSBX,MXWITMOL,SABCI,TDMIMOM,UKRVAYOY".split(",");
+	var catalog = "ACRDBT,IBRENCMM,JNTIAIAM,LTSBBSBX,MXWITMOL,SABCI,TDMIMOM,UKRVAYOY".split(",");
 
 	var counter = 0;
 
@@ -18,7 +18,7 @@
 	function iterateOverYears (i, j) {
 		if (j<2015) {
 			$.ajax({
-				url: 'http://localhost:4567/'+j+'/'+catalog[i]+'.json',
+				url: '/'+j+'/'+catalog[i]+'.json',
 				dataType: "json",
 				success: function(data){
 					counter ++;
@@ -33,10 +33,17 @@
 		if (k<data.length) {
 			var bo = new BloombergObject();
 			setTimeout(function() {
-				console.log(data[k]);
-				bo.save(data[k]).then(function(){
-					iterateOverObjects(data, k+1);
-				});							
+				$.ajax({
+					url: '/' + data[k].Ticker + '.json',
+					dataType: "json",
+					success: function(tickerInfo){
+						data[k].Name=tickerInfo[0].Description;
+						console.log(data[k]);
+						bo.save(data[k]).then(function(){
+							iterateOverObjects(data, k+1);
+						});	
+					}
+				})					
 			}, 40);
 		};
 	}

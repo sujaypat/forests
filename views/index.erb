@@ -2,9 +2,14 @@
 <html>
 <head>
 	<title></title>
+
+	<link rel="stylesheet" type="text/css" href="../bower_components/c3/c3.css">
+
+	<script src="http://www.parsecdn.com/js/parse-1.6.0.min.js"></script>
+
 </head>
 <body>
-<div id="window"></div>
+<div id="graph"></div>
 
 <b>Data Code:</b>
 <select id="code">
@@ -33,16 +38,64 @@
 	<option>2014</option>
 </select>
 
-
 <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="../bower_components/d3/d3.js"></script>
+<script type="text/javascript" src="../bower_components/c3/c3.js"></script>
 <script type="text/javascript">
-	function loadWindow () {
-		$("#window").load('/'+$("#year option:selected").text() + '/' + $("#code option:selected").text() + '.html');
+
+	Parse.initialize("nHOps9WmG2ubPDRp1XA8gHR6YPB5fGDCAUjGUttN", "sfvMLXaSvm2CUGsEbbLEc5HLXHp3vSr8EDlmteaU");
+
+	var BloombergObject = Parse.Object.extend("BloombergObject");
+	// var dataFromBloomberg = [['x'],['<%= params[:ticker] %>']];
+
+	var graph = c3.generate({
+	 	bindto: "#graph",
+	 	data: {
+	 		columns: [['x'],['data']],
+	 		x: "x"
+	 	},
+	 	axis: {
+	 		x: {
+	 			type: 'timeseries',
+	 			tick: {
+	 				format: "%B"
+	 			}
+	 		}
+	 	}
+	 });
+
+	function loadGraph (ticker, year) {
+		var dataFromBloomberg = [['x'],['data']];
+		var query = new Parse.Query(BloombergObject);
+		query.equalTo("Ticker", ticker + " Index");
+		query.greaterThan("Date", year+"-01-01");
+		query.lessThan("Date", year+"-12-31");
+		query.find({
+			success: function(results){
+				for (var i = 0; i < results.length; i++) {
+					dataFromBloomberg[0].push(results[i].get("Date"));
+					dataFromBloomberg[1].push(results[i].get("Value"));
+				};
+				console.log(dataFromBloomberg);
+
+				graph.load({
+					columns: dataFromBloomberg
+				});
+				graph.data.names({data: results[0].get("Name")});
+			},
+			error: function(error) {
+				console.log("Error: ", error.code + " " +error.message)
+			}
+		});
+		
 	}
 	$("select").on("change", function(){
-		loadWindow();
+		loadGraph($("#code option:selected").text(), $("#year option:selected").text());
 	});
-	loadWindow();
+	$("#code").trigger("change");
+
+		
+
 </script>
 </body>
 </html>
