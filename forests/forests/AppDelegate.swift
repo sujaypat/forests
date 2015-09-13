@@ -18,6 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		Parse.setApplicationId("nHOps9WmG2ubPDRp1XA8gHR6YPB5fGDCAUjGUttN", clientKey:"WeHrt87Cxpb0qBBhVm8KlTHsRQRXhqRGMrmxTwoT")
 		
+        // 1
+        let query = PFQuery(className: "BloombergObject")
+        // 2
+        query.whereKey("Ticker", equalTo: "UKRVAYOY Index")
+//        query.whereKey("", greaterThan: 1000)
+        // 3
+        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            if error == nil {
+                print("Successfully retrieved: \(objects)")
+            } else {
+                print("Error: \(error) \(error!.userInfo)")
+            }
+        }
+        
+        
 		// Override point for customization after application launch.
 		return true
 	}
