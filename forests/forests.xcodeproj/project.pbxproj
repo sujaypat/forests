@@ -16,8 +16,6 @@
 		351102FA1BA4AE3D006B6987 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351102F81BA4AE3D006B6987 /* TableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		351102FD1BA4AEA0006B6987 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351102FC1BA4AEA0006B6987 /* DetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		351103021BA4B067006B6987 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 351103001BA4B067006B6987 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		3554BDE41BA5465400D8D84B /* BloombergObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3554BDE31BA5465400D8D84B /* BloombergObject.swift */; settings = {ASSET_TAGS = (); }; };
-		3560436F1BA53D2F00EB1B38 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3560436E1BA53D2F00EB1B38 /* TableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		3C971B371AFCC35A00471316 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C971B311AFCC35A00471316 /* Bolts.framework */; };
 		3C971B381AFCC35A00471316 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C971B321AFCC35A00471316 /* Parse.framework */; };
 		3C971B391AFCC35A00471316 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C971B331AFCC35A00471316 /* ParseCrashReporting.framework */; };
@@ -46,8 +44,6 @@
 		351102F81BA4AE3D006B6987 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = forests/TableViewController.swift; sourceTree = SOURCE_ROOT; };
 		351102FC1BA4AEA0006B6987 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = forests/DetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		351103011BA4B067006B6987 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = forests/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
-		3554BDE31BA5465400D8D84B /* BloombergObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BloombergObject.swift; path = forests/BloombergObject.swift; sourceTree = SOURCE_ROOT; };
-		3560436E1BA53D2F00EB1B38 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = forests/TableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		3C971B311AFCC35A00471316 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		3C971B321AFCC35A00471316 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		3C971B331AFCC35A00471316 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -116,9 +112,7 @@
 				351102E11BA4A7D9006B6987 /* LaunchScreen.xib */,
 				351102FC1BA4AEA0006B6987 /* DetailViewController.swift */,
 				351103001BA4B067006B6987 /* Main.storyboard */,
-				3554BDE31BA5465400D8D84B /* BloombergObject.swift */,
 				351102F81BA4AE3D006B6987 /* TableViewController.swift */,
-				3560436E1BA53D2F00EB1B38 /* TableViewCell.swift */,
 				351102E71BA4A7E1006B6987 /* ViewController.swift */,
 				351102E91BA4A7E9006B6987 /* Images.xcassets */,
 				3CE3B1D51A82831700FF6AD8 /* Supporting Files */,
@@ -230,11 +224,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3560436F1BA53D2F00EB1B38 /* TableViewCell.swift in Sources */,
 				351102E81BA4A7E1006B6987 /* ViewController.swift in Sources */,
 				351102FA1BA4AE3D006B6987 /* TableViewController.swift in Sources */,
 				351102DF1BA4A7A9006B6987 /* AppDelegate.swift in Sources */,
-				3554BDE41BA5465400D8D84B /* BloombergObject.swift in Sources */,
 				351102FD1BA4AEA0006B6987 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

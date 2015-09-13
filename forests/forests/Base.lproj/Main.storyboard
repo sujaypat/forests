@@ -50,16 +50,16 @@
             </objects>
             <point key="canvasLocation" x="781.5" y="303.75"/>
         </scene>
-        <!--TableViewController-->
+        <!--Table View Controller-->
         <scene sceneID="Xvh-N8-FyM">
             <objects>
-                <tableViewController id="BhK-cM-wbB" userLabel="TableViewController" customClass="TableViewController" customModule="forests" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="BhK-cM-wbB" customClass="TableViewController" customModule="forests" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="sdS-xA-f5L">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="zsv-kq-SUx" userLabel="TableViewCell" customClass="TableViewCell" customModule="forests" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="zsv-kq-SUx" customClass="PFTableViewCell">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zsv-kq-SUx" id="1uV-Mt-fJ8">
@@ -76,15 +76,10 @@
                             <outlet property="delegate" destination="BhK-cM-wbB" id="rTn-zY-6Hn"/>
                         </connections>
                     </tableView>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="parseClassName" value="BloombergObject"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="pullToRefreshEnabled" value="NO"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="paginationEnabled" value="NO"/>
-                    </userDefinedRuntimeAttributes>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YM7-gH-r9s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-85.5" y="318.75"/>
+            <point key="canvasLocation" x="-67.5" y="303.75"/>
         </scene>
     </scenes>
 </document>
