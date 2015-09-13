@@ -42,10 +42,10 @@ class DetailViewController: UIViewController {
 		super.viewDidLoad()
 		print("loaded")
 		// Unwrap the current object object
-		if let object = currentObject {
-			ticker.text = object.valueForKey("Ticker") as? String
-
-		}
+//		if let object = currentObject {
+//			ticker.text = object.valueForKey("Ticker") as? String
+//
+//		}
 	}
 	
 	

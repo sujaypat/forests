@@ -39,23 +39,23 @@ class TableViewController: PFQueryTableViewController {
 	
 
 	//override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject!) -> PFTableViewCell? {
-        // 1
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TableViewCell
-        
-        // 2
-        let bloomEntry = object as! BloombergObject
-        
-        
-        // 4
-        let name = bloomEntry.Name
-        
-        print(name)
-        
-        cell.textLabel!.text = "\(name)"
-        
-        return cell
-    }
+//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject!) -> PFTableViewCell? {
+//        // 1
+//        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TableViewCell
+//        
+//        // 2
+//        let bloomEntry = object as! BloombergObject
+//        
+//        
+//        // 4
+//        let name = bloomEntry.Name
+//        
+//        print(name)
+//        
+//        cell.textLabel!.text = "\(name)"
+//        
+//        return cell
+//    }
 	
 	// In a storyboard-based application, you will often want to do a little preparation before navigation
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
