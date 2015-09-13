@@ -2,6 +2,10 @@ require 'sinatra'
 require 'aws-sdk-core'
 require 'json'
 
+get	"/" do 
+	erb :index
+end
+
 get "/:year/:ticker?.:format?" do
 	dynamodb = Aws::DynamoDB::Client.new(
 		region: 'us-east-1',
@@ -30,7 +34,7 @@ get "/:year/:ticker?.:format?" do
 		content_type :json
 		@data.items.to_json
 	else
-		erb :index
+		erb :view
 	end
 		
 end
