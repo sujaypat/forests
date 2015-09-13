@@ -28,7 +28,11 @@ void setup() {
     tracker = 13;
 
     tm1637.init();
-    tm1637.set(BRIGHT_TYPICAL);//BRIGHT_TYPICAL = 2,BRIGHT_DARKEST = 0,BRIGHTEST = 7;
+    tm1637.set(BRIGHTEST);//BRIGHT_TYPICAL = 2,BRIGHT_DARKEST = 0,BRIGHTEST = 7;
+    tm1637.display(0,21);
+    tm1637.display(1,24);
+    tm1637.display(2,10);
+    tm1637.display(3,13);
 }
 
 void loop() {
