@@ -49,8 +49,10 @@ class Blasteroid:
             ymod = -1
         else:
             ymod = 1
-        self.xv = xmod * (int(random() * 3) + 2)
-        self.yv = ymod * (int(random() * 3) + 2)
+        self.xv, self.yv = 0, 0
+        while (self.xv == 0 and self.yv == 0) or (self.xv ** 2 + self.yv ** 2) ** 0.5 < 5:
+            self.xv = xmod * int(random() * 5)
+            self.yv = ymod * int(random() * 5)
         self.particles = set()
         self.dead = False
 

@@ -24,7 +24,7 @@ class InGame(Scene):
         )
         self.labels.add(self.score_label)
         try:
-            self.ticker_name, self.data = BBManager.get_ticker_data()
+            self.name_value, self.ticker_name, self.data = BBManager.get_ticker_data()
             self.values = [eval(obj.Value) for obj in self.data]
             self.valmax = max(self.values)
             self.valmin = min(self.values)
@@ -53,14 +53,14 @@ class InGame(Scene):
             self.ticker_name,
         )
         self.labels.add(self.ticker_name_label)
-        self.ticker_name_big_label = Label(
+        self.name_value_big_label = Label(
             utils.SCREEN_M,
-            self.ticker_name,
+            self.name_value,
             font='default48',
             x_centered=True,
             y_centered=True,
         )
-        self.labels.add(self.ticker_name_big_label)
+        self.labels.add(self.name_value_big_label)
 
     def __init__(self):
         super().__init__()
@@ -94,8 +94,8 @@ class InGame(Scene):
                 if event.key == pygame.K_p:
                     self.paused = not self.paused
                     if not self.paused:
-                        if self.ticker_name_big_label in self.labels:
-                            self.labels.remove(self.ticker_name_big_label)
+                        if self.name_value_big_label in self.labels:
+                            self.labels.remove(self.name_value_big_label)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
                 if self.paused:
